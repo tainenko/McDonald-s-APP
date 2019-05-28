@@ -44,7 +44,8 @@ class McDonald(object):
 
             # Status code is 1 also redeem_end_datetime is not yet
             if status == 1 and redeem_end_datetime.day - datetime.now().day >= 0:
-                coupon = self.Re(value)
+                coupon = self.respones['results']['coupons'][value]['object_info']['title']
+                coupon = self.Re(coupon)
                 self.coupons.append(coupon + 'E:' + str(redeem_end_datetime.day - datetime.now().day))
 
         # Return coupon list
@@ -97,15 +98,16 @@ class McDonald(object):
 
                 # Get a sticker lottery
                 self.respones = requests.post('https://api1.mcddailyapp.com/sticker/redeem', json = self.json).text
+                self.respones = eval(self.respones) # Convert string to dictionary
 
                 # Print the results of coupon imformation
-                coupon = self.Re()
+                coupon = self.respones['results']['coupon']['object_info']['title']
+                coupon = self.Re(coupon)
                 print('You win a coupon !\n')
                 print(coupon)
 
     # Clear some characters are matched by Regular Expression
-    def Re(self, value = 0):
-        coupon = self.respones['results']['coupons'][value]['object_info']['title']
+    def Re(self, coupon):
         coupon = re.sub(r'鷄', '雞', coupon)
         coupon = re.sub(r'\(G.*\)|_.*|\(新.*', '', coupon)
         return coupon
