@@ -1,6 +1,6 @@
 import re
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class McDonald(object):
@@ -12,8 +12,8 @@ class McDonald(object):
           "access_token": token,
           "source_info": {
             "app_version": "2.2.0",
-            "device_time": "2000/00/00 00:00:00",
-            "device_uuid": "device_uuid",
+            "device_time": "2019/01/24 00:00:00",
+            "device_uuid": "97f2244b321cde39",
             "model_id": "Pixel XL",
             "os_version": "7.1.1",
             "platform": "Android"
@@ -43,10 +43,10 @@ class McDonald(object):
             redeem_end_datetime = datetime.strptime(redeem_end_datetime, '%Y/%m/%d %H:%M:%S')
 
             # Status code is 1 also redeem_end_datetime is not yet
-            if status == 1 and redeem_end_datetime.day - datetime.now().day >= 0:
+            if status == 1 and redeem_end_datetime - datetime.now() > timedelta():
                 coupon = self.respones['results']['coupons'][value]['object_info']['title']
                 coupon = self.Re(coupon)
-                self.coupons.append(coupon + 'E:' + str(redeem_end_datetime.day - datetime.now().day))
+                self.coupons.append(coupon + 'E:' + str((redeem_end_datetime - datetime.now()).days))
 
         # Return coupon list
         return self.coupons
