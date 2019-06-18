@@ -2,7 +2,6 @@ import re
 import requests
 from datetime import datetime, timedelta
 
-
 class McDonald(object):
     """docstring for McDonald."""
 
@@ -13,7 +12,7 @@ class McDonald(object):
           "source_info": {
             "app_version": "2.2.0",
             "device_time": "2019/01/24 00:00:00",
-            "device_uuid": "97f2244b321cde39",
+            "device_uuid": "device_uuid",
             "model_id": "Pixel XL",
             "os_version": "7.1.1",
             "platform": "Android"
@@ -24,13 +23,15 @@ class McDonald(object):
         self.stickers = 0
         self.expire_stickers = 0
 
-    # Request to get a lottery
+    # Basic lottery function
     def Lottery(self):
-        self.respones = requests.post('https://api2.mcddailyapp.com/lottery/get_item', json = self.json)
+        # Request to get a lottery
+        self.respones = requests.post('https://api2.mcddailyapp.com/lottery/get_item', json = self.json).text
+        self.respones = eval(self.respones)                               # Convert string to dictionary
+        return self.respones['results']['coupon']['object_info']['title'] # Return the result of lottery
 
     # Get the coupon list
     def Coupon_List(self):
-
         # Request to get the coupon list
         self.respones = requests.post('https://api1.mcddailyapp.com/coupon/get_list', json = self.json).text
         count = self.respones.count('coupon_id') # Count the number of coupons
@@ -53,6 +54,8 @@ class McDonald(object):
 
     # Get the sticker list
     def Sticker_List(self):
+        # Initializing the expired stickers again is a safe way to avoid the repeat addition
+        self.expire_stickers = 0
 
         # Request to get the sticker list
         self.respones = requests.post('https://api1.mcddailyapp.com/sticker/get_list', json = self.json).text
