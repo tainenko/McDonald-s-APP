@@ -27,8 +27,20 @@ class McDonald(object):
     def Lottery(self):
         # Request to get a lottery
         self.respones = requests.post('https://api2.mcddailyapp.com/lottery/get_item', json = self.json).text
-        self.respones = eval(self.respones)                               # Convert string to dictionary
-        return self.respones['results']['coupon']['object_info']['title'] # Return the result of lottery
+
+        # If you don't like to have the return value which lottery event , you can delete all the code below
+
+        # Convert string to dictionary
+        self.respones = eval(self.respones)
+
+        # Check the return value of lottery
+        if 'coupon' in self.respones['results']:
+            result = self.respones['results']['coupon']['object_info']['title']
+        else:
+            result = self.respones['results']['sticker']['object_info']['title']
+
+        # Return the result of lottery
+        return self.Re(result)
 
     # Get the coupon list
     def Coupon_List(self):
