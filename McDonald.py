@@ -26,12 +26,12 @@ class McDonald(object):
     # Basic lottery function
     def Lottery(self):
         # Request to get a lottery
-        self.respones = requests.post('https://api2.mcddailyapp.com/lottery/get_item', json = self.json).text
+        self.respones = requests.post('https://api1.mcddailyapp.com/lottery/get_item', json = self.json).text
 
         # If you don't like to have the return value which lottery event , you can delete all the code below
 
         # Convert string to dictionary
-        self.respones = eval(self.respones)
+        """self.respones = eval(self.respones)
 
         # Check the return value of lottery
         if 'coupon' in self.respones['results']:
@@ -40,7 +40,7 @@ class McDonald(object):
             result = self.respones['results']['sticker']['object_info']['title']
 
         # Return the result of lottery
-        return self.Re(result)
+        return self.Re(result)"""
 
     # Get the coupon list
     def Coupon_List(self):
@@ -124,5 +124,5 @@ class McDonald(object):
     # Clear some characters are matched by Regular Expression
     def Re(self, coupon):
         coupon = re.sub(r'鷄', '雞', coupon)
-        coupon = re.sub(r'\(G.*\)|_.*|\(新.*', '', coupon)
+        coupon = re.sub(r'\(G.*\)|\(S.*\)|_.*|\(新.*', '', coupon)
         return coupon
