@@ -1,5 +1,7 @@
 language: python
 notifications:
+  email:
+    - tainenko@hotmail.com
   webhooks:
     urls:
     - https://script.google.com/macros/s/AKfycbz2KSVfmN7jguvTZnAC3Bua7IVabrefE1TUbSEv9m4xnHHgp53C/exec
