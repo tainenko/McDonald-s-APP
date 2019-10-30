@@ -11,5 +11,8 @@ notifications:
     on_start:   always # default: never
     on_cancel:  always # default: always
     on_error:   always # default: always
-
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
 
