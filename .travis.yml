@@ -1,16 +1,14 @@
 language: python
+python:
+  - "3.7"
+script: pytest
 notifications:
-  email:
-    - tainenko@hotmail.com
   webhooks:
     urls:
-    - https://script.google.com/macros/s/AKfycbz2KSVfmN7jguvTZnAC3Bua7IVabrefE1TUbSEv9m4xnHHgp53C/exec
+    - secure: "T7bch9qbnH1iReJ8v1NPbns4kSXuio+clFPWeqZJqyVje47Wx7xomRB3ZcIxgMSPNocuH/u8xigcNi9RLFOwbBtXHLS7hmoPMGNAZE5u7ipB4uMWUKxfXMl0Z0putq2o0eXYc9js9XC6Msx54gnltltlomO1cgQBHlQzlmeqxMSrvKkOuzhfOEaF37Yz6mTXW/ayS4y/44b7T4EjcR0QNiq5bNingv5W2CnKvZem78kM5eVieSYb+m4VTTyOhQ6UAPM0DhtP1kOfKv7KoOZk/ywUlcI+14wq+qxMRwDhsCFmzIRzxPWDKPk0vzPveuzJPvNP2YjygfWpA+d4x8FMqIuSQ3uSF9bjv7S7yitXV/a6BJOnPG7tZPbgXVXd+N1CfHCmTGV8ufAqx4ZzVqSpTkEE9+xeMUuXv+glGu4u0paOgSjSWRj2wdOgt/GFoxcECxDaGRho7LwyZoGHj/xZ0iOz2PkBWFfSnOE2redsx6ixIBtlLhG3OM+HxUeOusq0zKNEOReCTUABWl1k74/upn7w4/ll5Nr8inNrly9o10O/akJ2kVNSxDIEf4lk/t2Vyk0EUZ7SqvnhGYRSJoceHmn6xeUJDbm//0NgisflVFbansymoCX6pVphxKdE28tDcjlQLfT2blP3JgC4JWTFv55iqEKc/lGmHZpqAs4XsxM="
     on_success: always # default: always
     on_failure: always # default: always
     on_start:   always # default: never
     on_cancel:  always # default: always
     on_error:   always # default: always
-python:
-  - "3.7"
-script: pytest
 
