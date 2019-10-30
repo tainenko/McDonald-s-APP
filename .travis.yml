@@ -12,5 +12,5 @@ notifications:
     on_error:   always # default: always
 python:
   - "3.7"
-script: true
+script: pytest
 
