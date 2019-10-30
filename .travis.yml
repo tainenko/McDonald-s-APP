@@ -7,7 +7,3 @@ notifications:
   webhooks:
     urls:
     - https://script.google.com/macros/s/AKfycbz2KSVfmN7jguvTZnAC3Bua7IVabrefE1TUbSEv9m4xnHHgp53C/exec
-    template:
-    - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
-    - "Execution time: *%{duration}*"
-    - "Message: %{message}"
