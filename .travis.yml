@@ -1,8 +1,4 @@
 language: python
-
-python:
-  - "3.7"
-script: true
 notifications:
   webhooks:
     urls:
@@ -12,3 +8,7 @@ notifications:
     on_start:   always # default: never
     on_cancel:  always # default: always
     on_error:   always # default: always
+python:
+  - "3.7"
+script: true
+
