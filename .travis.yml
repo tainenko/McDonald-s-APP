@@ -7,3 +7,8 @@ notifications:
   webhooks:
     urls:
     - https://script.google.com/macros/s/AKfycbz2KSVfmN7jguvTZnAC3Bua7IVabrefE1TUbSEv9m4xnHHgp53C/exec
+    on_success: always # default: always
+    on_failure: always # default: always
+    on_start:   always # default: never
+    on_cancel:  always # default: always
+    on_error:   always # default: always
